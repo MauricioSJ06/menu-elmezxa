@@ -590,7 +590,7 @@ body {
    ========================================================================== */
 .menu-footer {
     position: relative;
-    padding-top: 24px;
+    padding-top: 45px; /* Increased to fit the taller zig-zag */
     margin-top: auto;
 }
 
@@ -599,19 +599,57 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 12px;
+    height: 36px;
     overflow: hidden;
 }
 
 .zigzag-svg {
-    width: 200%;
+    width: 1040px; /* Fixed width matching 26 cycles */
     height: 100%;
-    animation: slideZigzag 6s infinite linear;
+    animation: slideZigzag 2.2s infinite linear;
 }
 
 @keyframes slideZigzag {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-40px); } /* Slide exactly one repeat width (40px) */
+}
+
+.zigzag-line {
+    fill: none;
+    stroke: var(--brand-pink);
+    stroke-width: 8px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: zigzagLineColor 6s infinite alternate ease-in-out;
+}
+
+.zigzag-dot-top {
+    fill: #00bfff; /* blue */
+    animation: zigzagTopColor 6s infinite alternate ease-in-out;
+}
+
+.zigzag-dot-bottom {
+    fill: var(--brand-yellow); /* yellow */
+    animation: zigzagBottomColor 6s infinite alternate ease-in-out;
+}
+
+/* Color shifting animations matching the neon restaurant theme */
+@keyframes zigzagLineColor {
+    0% { stroke: var(--brand-pink); filter: drop-shadow(0 0 3px rgba(228, 0, 124, 0.6)); }
+    50% { stroke: var(--brand-orange); filter: drop-shadow(0 0 3px rgba(255, 107, 53, 0.6)); }
+    100% { stroke: var(--brand-yellow); filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6)); }
+}
+
+@keyframes zigzagTopColor {
+    0% { fill: #00bfff; filter: drop-shadow(0 0 4px rgba(0, 191, 255, 0.8)); }
+    50% { fill: var(--brand-pink); filter: drop-shadow(0 0 4px rgba(228, 0, 124, 0.8)); }
+    100% { fill: var(--brand-orange); filter: drop-shadow(0 0 4px rgba(255, 107, 53, 0.8)); }
+}
+
+@keyframes zigzagBottomColor {
+    0% { fill: var(--brand-yellow); filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8)); }
+    50% { fill: #00bfff; filter: drop-shadow(0 0 4px rgba(0, 191, 255, 0.8)); }
+    100% { fill: var(--brand-pink); filter: drop-shadow(0 0 4px rgba(228, 0, 124, 0.8)); }
 }
 
 .footer-content {

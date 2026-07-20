@@ -3,119 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Menú Digital | El Mezxa</title>
-    <meta name="description" content="Escanea y explora nuestro delicioso menú digital. Disfruta de la mejor comida en El Mezxa.">
+    <title>El Mezxa - Menú Digital</title>
+    <meta name="description" content="Menú interactivo de El Mezxa. Birria, Mezcalitas y el mejor ambiente.">
+    <meta name="theme-color" content="#FF1493">
+    <!-- PWA manifest -->
+    <link rel="manifest" href="manifest.json">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Premium Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- App Background Glows -->
-    <div class="bg-glow bg-glow-orange"></div>
-    <div class="bg-glow bg-glow-pink"></div>
 
-    <div class="app-container">
-        <!-- Header Section -->
-        <header class="app-header">
-            <div class="header-logo-container">
-                <img src="Recurso 3.svg" alt="El Mezxa Logo" class="header-logo" id="logo-img">
+    <!-- Dynamic Animated Background Mesh & Floating Particles -->
+    <div class="mesh-bg"></div>
+    <div id="particle-container" class="particles-overlay"></div>
+
+    <!-- 1. INITIAL LOADER SCREEN -->
+    <div id="app-loader" class="loader-overlay">
+        <div class="loader-logo-wrapper">
+            <!-- Background Static Outline Logo -->
+            <svg class="loader-logo-svg bg-outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 656.3 203.86">
+                <path class="logo-orange-outline" d="M644.98,123.46c-2.54-4.9-2.5-11.56-2.46-19.28.02-3.9.04-7.91-.27-12.07.25-6.71-.15-13.24-.54-19.57-.63-10.18-1.22-19.8,1.09-28.13l5.23-18.86-19.57.62c-10.28.33-35.29,3.18-46.2,22.5-6.77,11.22-12.88,22.83-18.78,34.06-4.36,8.29-8.59,16.33-13,24.12-.53-1.2-1.06-2.42-1.59-3.65-.94-2.18-1.91-4.44-2.96-6.69-1.23-3.31-2.65-6.34-4.03-9.27-1.08-2.3-2.13-4.53-2.93-6.62,3.73-5.88,7.25-11.84,10.67-17.65,7.78-13.2,15.14-25.68,24.39-36.41l21.9-25.4c-22.88,1.46-45.77,2.93-68.65,4.39-.98,3.06-2.01,6.17-3.11,9.31-2.94,8.39-6.06,16.3-9.29,23.74-1.37-3.42-3.56-10.24-2.58-18.84.68-5.92,2.61-10.52,4.13-13.42-22.8,2.15-45.59,4.3-68.39,6.45,4.8,6.88,9.61,13.77,14.41,20.65,1.8,2.37,3.43,4.89,4.94,7.53-.55-.35-1.12-.69-1.73-.98l-3.72-1.82-4.12.44c-17.01,1.82-34.39,3.26-51.31,4.64l.02-.1-18.25,1.51c-1.63.13-3.25.31-4.87.48-1.39.15-2.77.3-4.16.41l-.22.02c-5.71.56-11.6,1.04-17.29,1.49-8.76.7-17.82,1.43-26.82,2.52.55-2.82,1.32-5.33,2.55-7.24l15.16-23.47-66.54,4.12-3.65,7.71c-4.36,9.2-8.72,18.56-12.93,27.61-2.42,5.19-4.86,10.44-7.33,15.71-3.35-11.92-6.67-23.94-9.83-35.84l-3.03-11.4-58.36,3.89,6.62,18.32c1.65,4.56.86,10.55-.06,17.49-.23,1.71-.45,3.41-.64,5.11-2.54,18.34-4.9,36.97-7.18,54.99l-1.62,12.78c-.3,1.99-.53,3.93-.76,5.81-.71,5.89-1.32,10.98-3.45,14.38-4.37,7.57-8.74,15.15-13.11,22.72l25.7-.69c5.6-.15,10.97-.73,16.16-1.28,3.84-.41,7.46-.8,11.04-1.01l18.32-1.06-5.39-17.54c-.59-1.93-.85-4.04-.89-6.23.7,2.46,1.41,4.93,2.12,7.38l.52,1.78c.7,3.58,2.28,6.38,4.34,8.45,4.32,4.34,9.77,4.49,10.94,4.51l137.67-12.03,105.37-7.75,3.16-9.28c1.55-4.56,4.11-10,7.66-16.28,4.98,10.41,11.9,20.94,23.98,27.5l.28.15.29.14c5.96,2.91,12.69,4.44,19.47,4.44,10.82,0,21.17-3.78,29.15-10.65l4.57-3.93,23.48-2.13c10.08-.91,17.77-1.64,24.94-2.36l21.1-2.12-9.76-18.83Z"/>
+                <path class="logo-pink-outline" d="M554.43,17.91c2.9-.21,5.78-.62,8.69-.76-15.83,18.36-26.25,40.86-39.75,61.02,1.35,8.35,6.37,15.87,9.25,23.86,5.13,10.95,8.89,23.33,18.48,31.36,16.47-24.63,28.26-52.1,43.61-77.48,6.07-10.97,21.59-14.95,34.21-15.35-4.65,16.76-.3,34.62-1.1,51.84,1.11,12.55-1.64,26.09,4.37,37.69-8.26.83-16.53,1.6-24.8,2.35,5.5-7.7,3.32-17.65,3.92-26.48-9.81.74-19.6,1.78-29.37,2.96-3.8,8.64-10.4,16.74-10.26,26.56-5.17.46-10.4.3-15.49,1.39,4.23,3.43,9.88,4.07,15.06,5.06-8.96,7.71-22.31,9.35-32.92,4.18-16.79-9.12-20.55-30.24-28.47-45.31-8.66,12.42-19.12,28.74-23.67,42.09-9.65.45-19.24,1.78-28.88,2.37,16.83-18.73,28.83-43.4,43.19-64.92-9.02-18.39-14.14-39.2-26.58-55.6,8.91-1.37,19.43-1.5,28.96-2.89-1.64,13.14,6.68,24.74,11.14,36.56,6.28-12.98,17.66-25.18,20.03-38.86,6.8-.43,13.58-1.17,20.38-1.64ZM609.54,58.92c-8.18,10.92-14.24,23.7-19.55,36.19,7-.66,14.04-1.14,21.03-1.96.25-11.85.2-23.72-.06-35.57-.35.33-1.06,1-1.42,1.34Z"/>
+                <path class="logo-pink-outline" d="M319.43,34.92c1.97-.17,3.95-.29,5.93-.38-4.07,6.3-5.07,13.88-5.82,21.19-3.47,27.91-7.24,55.79-10.81,83.7-.74,6.03-.84,12.22,1.16,18.03-9.28.65-18.52,1.8-27.8,2.26,2.99-4.54,4.54-9.85,5.2-15.33,2.77-23.35,6.51-46.6,9.24-69.94-14.51,28.93-28.45,58.24-42.11,87.61-3.07.86-1.31-2.79-2.78-4.22-7.31-25.13-13.86-50.54-21.62-75.51-2.86,19.98-5.19,40.04-7.7,60.07-1.16,7.44-1.76,15.22.49,22.54-8.95.52-17.8,2.03-26.75,2.27,4.85-7.75,4.94-17.09,6.27-25.85,2.88-22.66,5.68-45.33,8.82-67.96,1.08-9.7,3.38-19.79-.05-29.28,9.12-.45,18.2-1.66,27.31-2.22,6.46,24.3,13.42,48.53,20.26,72.74,12.7-25.67,24.48-51.86,36.76-77.76,8.01-.47,16-1.31,24-1.96Z"/>
+                <path class="logo-pink-outline" d="M101.38,52.85c2.43-.24,4.84-.6,7.26-.93-.44,7.08-1.75,14.08-2.4,21.15-14.76-3.47-29.93,1.26-44.81,2.03-1.48,11.93-3.06,23.85-4.31,35.8,11.32-1.78,23.39-.81,33.89-6.08-.61,7.86-2.34,15.61-2.4,23.51-11.2-2.85-22.73-.77-34,.53-1.04,12.02-2.85,24.19-4.42,36.3,15.93-2.43,33.37-.23,47.84-8.4-1.1,7.55-2.13,15.11-3.39,22.64-23.87,1.9-47.69,4.32-71.52,6.69,1.81-4.82,4.4-9.42,4.94-14.65,3.89-32.67,8.24-65.32,11.96-98.02.85-4.96-.43-9.81-1.71-14.52,21.06-1.7,42.06-3.91,63.07-6.05Z"/>
+                <path class="logo-pink-outline" d="M459.35,52.93c3.65,1.78-.42,10.12.02,14.57-16.26,22.49-32.52,45.11-49.51,67.27,15.18-1.88,32.52,1.01,45.75-8.18.71,9.22-6.53,19.16-16.21,19.3-17.28,1.12-34.5,3.38-51.79,4.22,1.51-4.83.42-10.54,3.38-14.81,15.79-21.92,33.2-44.61,49.09-67.35-13.23,1.84-27.47.08-39.66,6.4.62-5.47,2.04-10.83,2.34-16.34,18.88-1.54,37.75-3.07,56.59-5.08Z"/>
+                <path class="logo-pink-outline" d="M389.46,59.02c-.8,5.1-1.53,10.21-2.16,15.34-11.19-2.09-22.48.7-33.69,1.31-.91,8.74-2.55,17.39-3.22,26.15,8.39-1.38,17.25-.61,25.11-4.39-.35,5.9-1.33,11.74-1.92,17.62-8.08-2.76-16.73-.57-24.99-.06-1.07,8.7-2.63,17.34-3.36,26.07,11.46-1.63,23.95.02,34.48-5.5-.23,5.29-1.63,10.46-1.98,15.75-16.66,1.48-35.29,3.01-52.68,4.82,7.72-23.2,14.34-85.91,11.51-92.23,14.56-1.77,49.88-4.63,52.9-4.88Z"/>
+                <path class="logo-pink-outline" d="M139.47,83.9c3.63-.35-2.22,5.17-2.09,7.73-3.53,23.66-6.24,47.5-9.07,71.27,10.5-1.97,21.81-.59,31.56-5.55-.45,5.27-1.2,10.52-2.12,15.73-16.66,1.55-33.3,3.15-49.93,4.85,7.78-20.41,6.69-43.13,10.6-64.51.57-9.15,4.12-18.59.97-27.59,6.67-.91,13.4-1.18,20.08-1.93Z"/>
+            </svg>
+
+            <!-- Foreground Filling Liquid Logo Container -->
+            <div class="liquid-logo-container" id="loader-liquid">
+                <svg class="loader-logo-svg fill-solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 656.3 203.86">
+                    <!-- Outlines -->
+                    <path class="logo-orange-fill" d="M644.98,123.46c-2.54-4.9-2.5-11.56-2.46-19.28.02-3.9.04-7.91-.27-12.07.25-6.71-.15-13.24-.54-19.57-.63-10.18-1.22-19.8,1.09-28.13l5.23-18.86-19.57.62c-10.28.33-35.29,3.18-46.2,22.5-6.77,11.22-12.88,22.83-18.78,34.06-4.36,8.29-8.59,16.33-13,24.12-.53-1.2-1.06-2.42-1.59-3.65-.94-2.18-1.91-4.44-2.96-6.69-1.23-3.31-2.65-6.34-4.03-9.27-1.08-2.3-2.13-4.53-2.93-6.62,3.73-5.88,7.25-11.84,10.67-17.65,7.78-13.2,15.14-25.68,24.39-36.41l21.9-25.4c-22.88,1.46-45.77,2.93-68.65,4.39-.98,3.06-2.01,6.17-3.11,9.31-2.94,8.39-6.06,16.3-9.29,23.74-1.37-3.42-3.56-10.24-2.58-18.84.68-5.92,2.61-10.52,4.13-13.42-22.8,2.15-45.59,4.3-68.39,6.45,4.8,6.88,9.61,13.77,14.41,20.65,1.8,2.37,3.43,4.89,4.94,7.53-.55-.35-1.12-.69-1.73-.98l-3.72-1.82-4.12.44c-17.01,1.82-34.39,3.26-51.31,4.64l.02-.1-18.25,1.51c-1.63.13-3.25.31-4.87.48-1.39.15-2.77.3-4.16.41l-.22.02c-5.71.56-11.6,1.04-17.29,1.49-8.76.7-17.82,1.43-26.82,2.52.55-2.82,1.32-5.33,2.55-7.24l15.16-23.47-66.54,4.12-3.65,7.71c-4.36,9.2-8.72,18.56-12.93,27.61-2.42,5.19-4.86,10.44-7.33,15.71-3.35-11.92-6.67-23.94-9.83-35.84l-3.03-11.4-58.36,3.89,6.62,18.32c1.65,4.56.86,10.55-.06,17.49-.23,1.71-.45,3.41-.64,5.11-2.54,18.34-4.9,36.97-7.18,54.99l-1.62,12.78c-.3,1.99-.53,3.93-.76,5.81-.71,5.89-1.32,10.98-3.45,14.38-4.37,7.57-8.74,15.15-13.11,22.72l25.7-.69c5.6-.15,10.97-.73,16.16-1.28,3.84-.41,7.46-.8,11.04-1.01l18.32-1.06-5.39-17.54c-.59-1.93-.85-4.04-.89-6.23.7,2.46,1.41,4.93,2.12,7.38l.52,1.78c.7,3.58,2.28,6.38,4.34,8.45,4.32,4.34,9.77,4.49,10.94,4.51l137.67-12.03,105.37-7.75,3.16-9.28c1.55-4.56,4.11-10,7.66-16.28,4.98,10.41,11.9,20.94,23.98,27.5l.28.15.29.14c5.96,2.91,12.69,4.44,19.47,4.44,10.82,0,21.17-3.78,29.15-10.65l4.57-3.93,23.48-2.13c10.08-.91,17.77-1.64,24.94-2.36l21.1-2.12-9.76-18.83Z"/>
+                    <path class="logo-orange-fill" d="M299.53,172.79l-16.72,1.31c5.69-.28,11.3-.8,16.72-1.31Z"/>
+                    <path class="logo-orange-fill" d="M174.22,158.57l2.2-25.8-23.08,11.74c-2.38,1.21-5.29,1.82-8.61,2.21,2.03-17.07,4.16-34.5,6.68-51.54,0-.01.02-.03.03-.04,1.69-2.72,6.18-9.95,1.73-17.93-2.69-4.84-7.7-7.72-13.4-7.72-.55,0-1.12.03-1.69.08l-.22.02c-2.64.3-5.33.51-8.17.75-2.85.23-5.78.47-8.77.8.2-1.73.43-3.48.68-5.3.55-4.18,2.5-30.56,2.5-30.56l-104.24,10.66,4.55,16.73c.82,3,1.74,6.4,1.41,8.31,0,0-4.66,38.86-6.98,57.42-1.69,13.54-3.44,27.53-5.08,41.33l-.02.22c-.17,1.64-1.19,4.04-2.27,6.57-.6,1.42-1.23,2.89-1.83,4.5l-8.14,21.68,168.53-16.31.72-4.11c.39-2.24.79-4.47,1.18-6.71,1.09-6.16,1.84-11.72,2.29-17.01Z"/>
+                    
+                    <!-- Solid Letters -->
+                    <path class="logo-pink-fill" d="M554.43,17.91c2.9-.21,5.78-.62,8.69-.76-15.83,18.36-26.25,40.86-39.75,61.02,1.35,8.35,6.37,15.87,9.25,23.86,5.13,10.95,8.89,23.33,18.48,31.36,16.47-24.63,28.26-52.1,43.61-77.48,6.07-10.97,21.59-14.95,34.21-15.35-4.65,16.76-.3,34.62-1.1,51.84,1.11,12.55-1.64,26.09,4.37,37.69-8.26.83-16.53,1.6-24.8,2.35,5.5-7.7,3.32-17.65,3.92-26.48-9.81.74-19.6,1.78-29.37,2.96-3.8,8.64-10.4,16.74-10.26,26.56-5.17.46-10.4.3-15.49,1.39,4.23,3.43,9.88,4.07,15.06,5.06-8.96,7.71-22.31,9.35-32.92,4.18-16.79-9.12-20.55-30.24-28.47-45.31-8.66,12.42-19.12,28.74-23.67,42.09-9.65.45-19.24,1.78-28.88,2.37,16.83-18.73,28.83-43.4,43.19-64.92-9.02-18.39-14.14-39.2-26.58-55.6,8.91-1.37,19.43-1.5,28.96-2.89-1.64,13.14,6.68,24.74,11.14,36.56,6.28-12.98,17.66-25.18,20.03-38.86,6.8-.43,13.58-1.17,20.38-1.64ZM609.54,58.92c-8.18,10.92-14.24,23.7-19.55,36.19,7-.66,14.04-1.14,21.03-1.96.25-11.85.2-23.72-.06-35.57-.35.33-1.06,1-1.42,1.34Z"/>
+                    <path class="logo-pink-fill" d="M319.43,34.92c1.97-.17,3.95-.29,5.93-.38-4.07,6.3-5.07,13.88-5.82,21.19-3.47,27.91-7.24,55.79-10.81,83.7-.74,6.03-.84,12.22,1.16,18.03-9.28.65-18.52,1.8-27.8,2.26,2.99-4.54,4.54-9.85,5.2-15.33,2.77-23.35,6.51-46.6,9.24-69.94-14.51,28.93-28.45,58.24-42.11,87.61-3.07.86-1.31-2.79-2.78-4.22-7.31-25.13-13.86-50.54-21.62-75.51-2.86,19.98(5.19,40.04,7.7,60.07-1.16,7.44-1.76,15.22.49,22.54-8.95.52-17.8,2.03-26.75,2.27,4.85-7.75,4.94-17.09,6.27-25.85,2.88-22.66,5.68-45.33,8.82-67.96,1.08-9.7,3.38-19.79-.05-29.28,9.12-.45,18.2-1.66,27.31-2.22,6.46,24.3,13.42,48.53,20.26,72.74,12.7-25.67,24.48-51.86,36.76-77.76,8.01-.47,16-1.31,24-1.96Z"/>
+                    <path class="logo-pink-fill" d="M101.38,52.85c2.43-.24,4.84-.6,7.26-.93-.44,7.08-1.75,14.08-2.4,21.15-14.76-3.47-29.93,1.26-44.81,2.03-1.48,11.93-3.06,23.85-4.31,35.8,11.32-1.78,23.39-.81,33.89-6.08-.61,7.86-2.34,15.61-2.4,23.51-11.2-2.85-22.73-.77-34,.53-1.04,12.02-2.85,24.19-4.42,36.3,15.93-2.43,33.37-.23,47.84-8.4-1.1,7.55-2.13,15.11-3.39,22.64-23.87,1.9-47.69,4.32-71.52,6.69,1.81-4.82,4.4-9.42,4.94-14.65,3.89-32.67,8.24-65.32,11.96-98.02.85-4.96-.43-9.81-1.71-14.52,21.06-1.7,42.06-3.91,63.07-6.05Z"/>
+                    <path class="logo-pink-fill" d="M459.35,52.93c3.65,1.78-.42,10.12.02,14.57-16.26,22.49-32.52,45.11-49.51,67.27,15.18-1.88,32.52,1.01,45.75-8.18.71,9.22-6.53,19.16-16.21,19.3-17.28,1.12-34.5,3.38-51.79,4.22,1.51-4.83.42-10.54,3.38-14.81,15.79-21.92,33.2-44.61,49.09-67.35-13.23,1.84-27.47.08-39.66,6.4.62-5.47,2.04-10.83,2.34-16.34,18.88-1.54,37.75-3.07,56.59-5.08Z"/>
+                    <path class="logo-pink-fill" d="M389.46,59.02c-.8,5.1-1.53,10.21-2.16,15.34-11.19-2.09-22.48.7-33.69,1.31-.91,8.74-2.55,17.39-3.22,26.15,8.39-1.38,17.25-.61,25.11-4.39-.35,5.9-1.33,11.74-1.92,17.62-8.08-2.76-16.73-.57-24.99-.06-1.07,8.7-2.63,17.34-3.36,26.07,11.46-1.63,23.95.02,34.48-5.5-.23,5.29-1.63,10.46-1.98,15.75-16.66,1.48-35.29,3.01-52.68,4.82,7.72-23.2,14.34-85.91,11.51-92.23,14.56-1.77,49.88-4.63,52.9-4.88Z"/>
+                    <path class="logo-pink-fill" d="M139.47,83.9c3.63-.35-2.22,5.17-2.09,7.73-3.53,23.66-6.24,47.5-9.07,71.27,10.5-1.97,21.81-.59,31.56-5.55-.45,5.27-1.2,10.52-2.12,15.73-16.66,1.55-33.3,3.15-49.93,4.85,7.78-20.41,6.69-43.13,10.6-64.51.57-9.15,4.12-18.59.97-27.59,6.67-.91,13.4-1.18,20.08-1.93Z"/>
+                </svg>
             </div>
-            <h1 class="header-title">EL MEZXA</h1>
-            <p class="header-subtitle">Menú Digital</p>
+        </div>
+        <div class="loader-text">CARGANDO EL MEZCAL...</div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div class="app-wrap">
+
+        <!-- 2. BRAND HEADER -->
+        <header class="menu-header scroll-reveal">
+            <!-- Butterflies Floating SVGs -->
+            <div class="butterfly butterfly-left">
+                <svg viewBox="0 0 100 100" class="butterfly-svg">
+                    <path d="M50 50 C20 20, 10 50, 40 60 C10 70, 20 90, 50 70 C80 90, 90 70, 60 60 C90 50, 80 20, 50 50 Z" fill="#ffd700"/>
+                </svg>
+            </div>
+            <div class="butterfly butterfly-right">
+                <svg viewBox="0 0 100 100" class="butterfly-svg">
+                    <path d="M50 50 C20 20, 10 50, 40 60 C10 70, 20 90, 50 70 C80 90, 90 70, 60 60 C90 50, 80 20, 50 50 Z" fill="#ffd700"/>
+                </svg>
+            </div>
+
+            <!-- Inline SVG Logo -->
+            <div class="logo-wrapper">
+                <svg class="header-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 656.3 203.86">
+                    <path class="logo-orange" d="M644.98,123.46c-2.54-4.9-2.5-11.56-2.46-19.28.02-3.9.04-7.91-.27-12.07.25-6.71-.15-13.24-.54-19.57-.63-10.18-1.22-19.8,1.09-28.13l5.23-18.86-19.57.62c-10.28.33-35.29,3.18-46.2,22.5-6.77,11.22-12.88,22.83-18.78,34.06-4.36,8.29-8.59,16.33-13,24.12-.53-1.2-1.06-2.42-1.59-3.65-.94-2.18-1.91-4.44-2.96-6.69-1.23-3.31-2.65-6.34-4.03-9.27-1.08-2.3-2.13-4.53-2.93-6.62,3.73-5.88,7.25-11.84,10.67-17.65,7.78-13.2,15.14-25.68,24.39-36.41l21.9-25.4c-22.88,1.46-45.77,2.93-68.65,4.39-.98,3.06-2.01,6.17-3.11,9.31-2.94,8.39-6.06,16.3-9.29,23.74-1.37-3.42-3.56-10.24-2.58-18.84.68-5.92,2.61-10.52,4.13-13.42-22.8,2.15-45.59,4.3-68.39,6.45,4.8,6.88,9.61,13.77,14.41,20.65,1.8,2.37,3.43,4.89,4.94,7.53-.55-.35-1.12-.69-1.73-.98l-3.72-1.82-4.12.44c-17.01,1.82-34.39,3.26-51.31,4.64l.02-.1-18.25,1.51c-1.63.13-3.25.31-4.87.48-1.39.15-2.77.3-4.16.41l-.22.02c-5.71.56-11.6,1.04-17.29,1.49-8.76.7-17.82,1.43-26.82,2.52.55-2.82,1.32-5.33,2.55-7.24l15.16-23.47-66.54,4.12-3.65,7.71c-4.36,9.2-8.72,18.56-12.93,27.61-2.42,5.19-4.86,10.44-7.33,15.71-3.35-11.92-6.67-23.94-9.83-35.84l-3.03-11.4-58.36,3.89,6.62,18.32c1.65,4.56.86,10.55-.06,17.49-.23,1.71-.45,3.41-.64,5.11-2.54,18.34-4.9,36.97-7.18,54.99l-1.62,12.78c-.3,1.99-.53,3.93-.76,5.81-.71,5.89-1.32,10.98-3.45,14.38-4.37,7.57-8.74,15.15-13.11,22.72l25.7-.69c5.6-.15,10.97-.73,16.16-1.28,3.84-.41,7.46-.8,11.04-1.01l18.32-1.06-5.39-17.54c-.59-1.93-.85-4.04-.89-6.23.7,2.46,1.41,4.93,2.12,7.38l.52,1.78c.7,3.58,2.28,6.38,4.34,8.45,4.32,4.34,9.77,4.49,10.94,4.51l137.67-12.03,105.37-7.75,3.16-9.28c1.55-4.56,4.11-10,7.66-16.28,4.98,10.41,11.9,20.94,23.98,27.5l.28.15.29.14c5.96,2.91,12.69,4.44,19.47,4.44,10.82,0,21.17-3.78,29.15-10.65l4.57-3.93,23.48-2.13c10.08-.91,17.77-1.64,24.94-2.36l21.1-2.12-9.76-18.83Z"/>
+                    <path class="logo-orange" d="M299.53,172.79l-16.72,1.31c5.69-.28,11.3-.8,16.72-1.31Z"/>
+                    <path class="logo-orange" d="M174.22,158.57l2.2-25.8-23.08,11.74c-2.38,1.21-5.29,1.82-8.61,2.21,2.03-17.07,4.16-34.5,6.68-51.54,0-.01.02-.03.03-.04,1.69-2.72,6.18-9.95,1.73-17.93-2.69-4.84-7.7-7.72-13.4-7.72-.55,0-1.12.03-1.69.08l-.22.02c-2.64.3-5.33.51-8.17.75-2.85.23-5.78.47-8.77.8.2-1.73.43-3.48.68-5.3.55-4.18,2.5-30.56,2.5-30.56l-104.24,10.66,4.55,16.73c.82,3,1.74,6.4,1.41,8.31,0,0-4.66,38.86-6.98,57.42-1.69,13.54-3.44,27.53-5.08,41.33l-.02.22c-.17,1.64-1.19,4.04-2.27,6.57-.6,1.42-1.23,2.89-1.83,4.5l-8.14,21.68,168.53-16.31.72-4.11c.39-2.24.79-4.47,1.18-6.71,1.09-6.16,1.84-11.72,2.29-17.01Z"/>
+                    <path class="logo-pink" d="M554.43,17.91c2.9-.21,5.78-.62,8.69-.76-15.83,18.36-26.25,40.86-39.75,61.02,1.35,8.35,6.37,15.87,9.25,23.86,5.13,10.95,8.89,23.33,18.48,31.36,16.47-24.63,28.26-52.1,43.61-77.48,6.07-10.97,21.59-14.95,34.21-15.35-4.65,16.76-.3,34.62-1.1,51.84,1.11,12.55-1.64,26.09,4.37,37.69-8.26.83-16.53,1.6-24.8,2.35,5.5-7.7,3.32-17.65,3.92-26.48-9.81.74-19.6,1.78-29.37,2.96-3.8,8.64-10.4,16.74-10.26,26.56-5.17.46-10.4.3-15.49,1.39,4.23,3.43,9.88,4.07,15.06,5.06-8.96,7.71-22.31,9.35-32.92,4.18-16.79-9.12-20.55-30.24-28.47-45.31-8.66,12.42-19.12,28.74-23.67,42.09-9.65.45-19.24,1.78-28.88,2.37,16.83-18.73,28.83-43.4,43.19-64.92-9.02-18.39-14.14-39.2-26.58-55.6,8.91-1.37,19.43-1.5,28.96-2.89-1.64,13.14,6.68,24.74,11.14,36.56,6.28-12.98,17.66-25.18,20.03-38.86,6.8-.43,13.58-1.17,20.38-1.64ZM609.54,58.92c-8.18,10.92-14.24,23.7-19.55,36.19,7-.66,14.04-1.14,21.03-1.96.25-11.85.2-23.72-.06-35.57-.35.33-1.06,1-1.42,1.34Z"/>
+                    <path class="logo-pink" d="M319.43,34.92c1.97-.17,3.95-.29,5.93-.38-4.07,6.3-5.07,13.88-5.82,21.19-3.47,27.91-7.24,55.79-10.81,83.7-.74,6.03-.84,12.22,1.16,18.03-9.28.65-18.52,1.8-27.8,2.26,2.99-4.54,4.54-9.85,5.2-15.33,2.77-23.35,6.51-46.6,9.24-69.94-14.51,28.93-28.45,58.24-42.11,87.61-3.07.86-1.31-2.79-2.78-4.22-7.31-25.13-13.86-50.54-21.62-75.51-2.86,19.98-5.19,40.04-7.7,60.07-1.16,7.44-1.76,15.22.49,22.54-8.95.52-17.8,2.03-26.75,2.27,4.85-7.75,4.94-17.09,6.27-25.85,2.88-22.66,5.68-45.33,8.82-67.96,1.08-9.7,3.38-19.79-.05-29.28,9.12-.45,18.2-1.66,27.31-2.22,6.46,24.3,13.42,48.53,20.26,72.74,12.7-25.67,24.48-51.86,36.76-77.76,8.01-.47,16-1.31,24-1.96Z"/>
+                    <path class="logo-pink" d="M101.38,52.85c2.43-.24,4.84-.6,7.26-.93-.44,7.08-1.75,14.08-2.4,21.15-14.76-3.47-29.93,1.26-44.81,2.03-1.48,11.93-3.06,23.85-4.31,35.8,11.32-1.78,23.39-.81,33.89-6.08-.61,7.86-2.34,15.61-2.4,23.51-11.2-2.85-22.73-.77-34,.53-1.04,12.02-2.85,24.19-4.42,36.3,15.93-2.43,33.37-.23,47.84-8.4-1.1,7.55-2.13,15.11-3.39,22.64-23.87,1.9-47.69,4.32-71.52,6.69,1.81-4.82,4.4-9.42,4.94-14.65,3.89-32.67,8.24-65.32,11.96-98.02.85-4.96-.43-9.81-1.71-14.52,21.06-1.7,42.06-3.91,63.07-6.05Z"/>
+                    <path class="logo-pink" d="M459.35,52.93c3.65,1.78-.42,10.12.02,14.57-16.26,22.49-32.52,45.11-49.51,67.27,15.18-1.88,32.52,1.01,45.75-8.18.71,9.22-6.53,19.16-16.21,19.3-17.28,1.12-34.5,3.38-51.79,4.22,1.51-4.83.42-10.54,3.38-14.81,15.79-21.92,33.2-44.61,49.09-67.35-13.23,1.84-27.47.08-39.66,6.4.62-5.47,2.04-10.83,2.34-16.34,18.88-1.54,37.75-3.07,56.59-5.08Z"/>
+                    <path class="logo-pink" d="M389.46,59.02c-.8,5.1-1.53,10.21-2.16,15.34-11.19-2.09-22.48.7-33.69,1.31-.91,8.74-2.55,17.39-3.22,26.15,8.39-1.38,17.25-.61,25.11-4.39-.35,5.9-1.33,11.74-1.92,17.62-8.08-2.76-16.73-.57-24.99-.06-1.07,8.7-2.63,17.34-3.36,26.07,11.46-1.63,23.95.02,34.48-5.5-.23,5.29-1.63,10.46-1.98,15.75-16.66,1.48-35.29,3.01-52.68,4.82,7.72-23.2,14.34-85.91,11.51-92.23,14.56-1.77,49.88-4.63,52.9-4.88Z"/>
+                    <path class="logo-pink" d="M139.47,83.9c3.63-.35-2.22,5.17-2.09,7.73-3.53,23.66-6.24,47.5-9.07,71.27,10.5-1.97,21.81-.59,31.56-5.55-.45,5.27-1.2,10.52-2.12,15.73-16.66,1.55-33.3,3.15-49.93,4.85,7.78-20.41,6.69-43.13,10.6-64.51.57-9.15,4.12-18.59.97-27.59,6.67-.91,13.4-1.18,20.08-1.93Z"/>
+                </svg>
+            </div>
+            
+            <div class="header-decor">
+                <span class="decor-dot"></span>
+                <span class="decor-dot"></span>
+                <span class="decor-dot"></span>
+            </div>
         </header>
 
-        <!-- Main Content -->
-        <main class="app-main">
-            <!-- Loading Skeleton -->
-            <div id="loading-skeleton" class="skeleton-container">
-                <div class="skeleton-line"></div>
-                <div class="skeleton-image">
-                    <i class="fa-solid fa-utensils skeleton-icon"></i>
-                    <p>Cargando menú...</p>
-                </div>
-            </div>
-
-            <!-- Menu Viewer Container -->
-            <div class="menu-viewer-wrapper" id="menu-viewer-container">
-                <!-- Viewer Controls -->
-                <div class="viewer-controls">
-                    <button class="control-btn" id="btn-zoom-in" title="Acercar">
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
-                    <button class="control-btn" id="btn-zoom-out" title="Alejar">
-                        <i class="fa-solid fa-minus"></i>
-                    </button>
-                    <button class="control-btn" id="btn-zoom-reset" title="Restaurar">
-                        <i class="fa-solid fa-expand"></i>
-                    </button>
-                    <button class="control-btn" id="btn-fullscreen" title="Pantalla Completa">
-                        <i class="fa-solid fa-maximize"></i>
-                    </button>
-                </div>
-
-                <!-- Zoom and Pan viewport -->
-                <div class="viewer-viewport" id="viewport">
-                    <div class="viewer-canvas" id="canvas">
-                        <img src="El mezxa.svg" alt="Menú El Mezxa" class="menu-image" id="menu-img" draggable="false">
-                    </div>
-                </div>
-
-                <!-- Mobile gesture helper -->
-                <div class="gesture-hint" id="gesture-hint">
-                    <i class="fa-solid fa-hand-pointer"></i> Desliza para mover • Pellizca para ampliar
-                </div>
-            </div>
-
-            <!-- Quick Action Floating Buttons -->
-            <div class="action-buttons-container">
-                <button class="action-btn btn-share" id="btn-share-menu">
-                    <i class="fa-solid fa-share-nodes"></i> Compartir Menú
-                </button>
-                <button class="action-btn btn-qr" id="btn-open-qr">
-                    <i class="fa-solid fa-qrcode"></i> Código QR Mesa
-                </button>
-            </div>
-        </main>
-
-        <!-- Footer Section -->
-        <footer class="app-footer">
-            <div class="footer-socials">
-                <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="social-link"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-            <p class="footer-text">&copy; 2026 El Mezxa. Todos los derechos reservados.</p>
-        </footer>
-    </div>
-
-    <!-- QR Code Modal -->
-    <div class="modal-backdrop" id="qr-modal">
-        <div class="modal-card">
-            <button class="modal-close" id="btn-close-qr"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="modal-title">Código QR del Menú</h2>
-            <p class="modal-description">Escanea este código desde otro celular para compartir el menú de inmediato.</p>
+        <!-- 3. FOOD SECTION (COMIDA) -->
+        <section class="menu-section scroll-reveal" id="comida-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-fire-burner title-icon"></i> COMIDA <i class="fa-solid fa-fire-burner title-icon"></i>
+            </h2>
             
-            <div class="qr-code-wrapper">
-                <div id="qrcode-container"></div>
+            <div class="menu-items-grid">
+                <!-- Item 1: Birria Grande -->
+                <div class="menu-item-card" style="--delay: 1;">
+                    <div class="item-header">
+                        <span class="item-title">Birria GDE</span>
+                        <div class="item-price" data-price="130">$<span class="price-val">0</span></div>
+                    </div>
+                    <!-- Dynamic Dotting Divider -->
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">Nuestra tradicional y jugosa birria de res en porción grande, servida con consomé caliente.</p>
+                </div>
+
+                <!-- Item 2: Birria Chica -->
+                <div class="menu-item-card" style="--delay: 2;">
+                    <div class="item-header">
+                        <span class="item-title">Birria CHI</span>
+                        <div class="item-price" data-price="65">$<span class="price-val">0</span></div>
+                    </div>
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">Porción individual perfecta de nuestra famosa birria de res de la casa.</p>
+                </div>
+
+                <!-- Item 3: Birriamen -->
+                <div class="menu-item-card" style="--delay: 3;">
+                    <div class="item-header">
+                        <span class="item-title">Birriamen</span>
+                        <div class="item-price" data-price="150">$<span class="price-val">0</span></div>
+                    </div>
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">La combinación ideal: ramen instantáneo con nuestro consomé y carne de birria picadita.</p>
+                </div>
+
+                <!-- Item 4: Tacos -->
+                <div class="menu-item-card" style="--delay: 4;">
+                    <div class="item-header">
+                        <span class="item-title">Tacos de Birria</span>
+                        <div class="item-price" data-price="35">$<span class="price-val">0</span></div>
+                    </div>
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">Taco con tortilla de maíz doble, copeteado con cebolla, cilantro y carne de birria suave.</p>
+                </div>
+
+                <!-- Item 5: Quesabirrias -->
+                <div class="menu-item-card" style="--delay: 5;">
+                    <div class="item-header">
+                        <span class="item-title">Quesabirrias</span>
+                        <div class="item-price" data-price="45">$<span class="price-val">0</span></div>
+                    </div>
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">Tortilla de maíz doradita en la grasa de la birria, queso fundido y carne. ¡Una delicia!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shimmering Line Divider -->
+        <div class="shimmer-divider scroll-reveal"></div>
+
+        <!-- 4. DRINKS SECTION (BEBIDAS) -->
+        <section class="menu-section scroll-reveal" id="bebidas-section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-whiskey-glass title-icon"></i> BEBIDAS <i class="fa-solid fa-whiskey-glass title-icon"></i>
+            </h2>
+
+            <div class="menu-items-grid">
+                <!-- Item 1: Mezcalitas -->
+                <div class="menu-item-card" style="--delay: 1;">
+                    <div class="item-header">
+                        <span class="item-title">Mezcalitas</span>
+                        <div class="item-price" data-price="120">$<span class="price-val">0</span></div>
+                    </div>
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">Mezcal artesanal con frutas naturales escarchado con chile.
+                        <span class="flavors-list">Sabores: Maracuyá, Fresa, Mango, Jamaica y Tamarindo.</span>
+                    </p>
+                </div>
+
+                <!-- Item 2: Ron -->
+                <div class="menu-item-card" style="--delay: 2;">
+                    <div class="item-header">
+                        <span class="item-title">Ron (Mojitos / Cuba / Bull)</span>
+                        <div class="item-price" data-price="110">$<span class="price-val">0</span></div>
+                    </div>
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">Tus clásicos favoritos preparados al momento con ron premium blanco u oscuro.</p>
+                </div>
+
+                <!-- Item 3: Vodka -->
+                <div class="menu-item-card" style="--delay: 3;">
+                    <div class="item-header">
+                        <span class="item-title">Vodka Preparados</span>
+                        <div class="item-price" data-price="110">$<span class="price-val">0</span></div>
+                    </div>
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">Preparados refrescantes de vodka con sabores cítricos y frutales a elegir.</p>
+                </div>
+
+                <!-- Item 4: Whisky -->
+                <div class="menu-item-card" style="--delay: 4;">
+                    <div class="item-header">
+                        <span class="item-title">Whisky Copas</span>
+                        <div class="item-price" data-price="110">$<span class="price-val">0</span></div>
+                    </div>
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">Whisky escocés en las rocas o mezclado con agua mineral o refresco de manzana.</p>
+                </div>
+
+                <!-- Item 5: Miches -->
+                <div class="menu-item-card" style="--delay: 5;">
+                    <div class="item-header">
+                        <span class="item-title">Micheladas Preparadas</span>
+                        <div class="item-price" data-price="85">$<span class="price-val">0</span></div>
+                    </div>
+                    <svg class="dotted-divider-svg" viewBox="0 0 100 10">
+                        <line x1="0" y1="5" x2="100" y2="5" class="dotted-line" />
+                    </svg>
+                    <p class="item-desc">Cerveza escarchada con chamoy, gomitas, chile en polvo y salsas especiales de la casa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. LITRO BANNER WITH ANIMATED CUPS -->
+        <section class="banner-section scroll-reveal">
+            <div class="banner-glass">
+                <div class="banner-animation">
+                    <!-- Animated Drinking Cups SVG -->
+                    <svg viewBox="0 0 200 100" class="cups-svg">
+                        <!-- Left Cup -->
+                        <g class="cup-left">
+                            <path d="M40 70 L50 20 L75 20 L65 70 Z" fill="rgba(255, 107, 53, 0.4)" stroke="#ff6b35" stroke-width="2"/>
+                            <!-- Liquid inside -->
+                            <path d="M43 65 L52 28 L72 28 L63 65 Z" fill="#ffd700" class="cup-liquid"/>
+                            <rect x="52" y="10" width="4" height="25" fill="#ffffff" transform="rotate(-10 52 10)"/>
+                            <!-- Bubbles -->
+                            <circle cx="50" cy="45" r="2" fill="#fff" class="bubble b1"/>
+                            <circle cx="58" cy="55" r="1.5" fill="#fff" class="bubble b2"/>
+                            <circle cx="63" cy="35" r="2" fill="#fff" class="bubble b3"/>
+                        </g>
+                        <!-- Right Cup -->
+                        <g class="cup-right">
+                            <path d="M160 70 L150 20 L125 20 L135 70 Z" fill="rgba(228, 0, 124, 0.4)" stroke="#e4007c" stroke-width="2"/>
+                            <!-- Liquid inside -->
+                            <path d="M157 65 L148 28 L128 28 L137 65 Z" fill="#ffd700" class="cup-liquid"/>
+                            <rect x="144" y="10" width="4" height="25" fill="#ffffff" transform="rotate(10 144 10)"/>
+                            <!-- Bubbles -->
+                            <circle cx="140" cy="50" r="1.5" fill="#fff" class="bubble b4"/>
+                            <circle cx="148" cy="38" r="2" fill="#fff" class="bubble b5"/>
+                            <circle cx="134" cy="58" r="1.5" fill="#fff" class="bubble b6"/>
+                        </g>
+                    </svg>
+                </div>
+                <h3 class="banner-title">¡TODAS LAS BEBIDAS SON DE LITRO PARA LLEVAR!</h3>
+                <p class="banner-desc">Lleva tus mezcalitas o preparados favoritos a donde quieras.</p>
+            </div>
+        </section>
+
+        <!-- 6. FOOTER WITH ZIG-ZAG BORDER -->
+        <footer class="menu-footer scroll-reveal">
+            <!-- Infinite Zig-Zag Border SVG -->
+            <div class="zigzag-wrapper">
+                <svg viewBox="0 0 100 10" preserveAspectRatio="none" class="zigzag-svg">
+                    <defs>
+                        <linearGradient id="zigzag-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#e4007c" />
+                            <stop offset="50%" stop-color="#ff6b35" />
+                            <stop offset="100%" stop-color="#ffd700" />
+                        </linearGradient>
+                    </defs>
+                    <polygon points="0,0 10,10 20,0 30,10 40,0 50,10 60,0 70,10 80,0 90,10 100,0 100,10 0,10" fill="url(#zigzag-grad)" class="zigzag-poly" />
+                </svg>
             </div>
 
-            <div class="modal-actions">
-                <button class="modal-btn btn-download-qr" id="btn-download-qr">
-                    <i class="fa-solid fa-download"></i> Descargar QR para Mesa
-                </button>
+            <div class="footer-content">
+                <div class="delivery-badge">
+                    <i class="fa-solid fa-motorcycle"></i>
+                    <span>SERVICIO A DOMICILIO</span>
+                </div>
+                <a href="tel:5512345678" class="footer-phone" id="btn-footer-call">
+                    <i class="fa-solid fa-phone"></i> (55) 1234 5678
+                </a>
+                <p class="footer-copy">&copy; 2026 El Mezxa. Los mejores mezcales y birria de la ciudad.</p>
             </div>
-            <p class="modal-tip"><i class="fa-solid fa-circle-info"></i> Puedes imprimir este código y colocarlo en las mesas de tu restaurante.</p>
-        </div>
+        </footer>
+
     </div>
 
-    <!-- Third-Party Scripts -->
-    <script src="qrcode.min.js"></script>
-    <!-- Core Application Logic -->
-    <script src="app.js"></script>
+    <!-- 7. STICKY FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/525512345678" target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="btn-whatsapp-float" title="Ordenar por WhatsApp">
+        <div class="float-ripple"></div>
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Custom Core App Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>

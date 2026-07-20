@@ -1,0 +1,18 @@
+{
+  "short_name": "El Mezxa",
+  "name": "El Mezxa - Menú Digital",
+  "description": "Explora el menú interactivo de El Mezxa - Birria & Mezcal.",
+  "icons": [
+    {
+      "src": "Recurso 3.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#0e0e12",
+  "theme_color": "#FF1493",
+  "display": "standalone",
+  "orientation": "portrait"
+}

@@ -17,14 +17,33 @@
     --text-muted: #a1a1aa;
     
     /* Card Styles */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.05);
     --glass-border-focus: rgba(228, 0, 124, 0.4);
     
     /* Animation Speeds */
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    --border-radius-md: 16px;
-    --border-radius-lg: 24px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+
+    /* Flavor Tones (Distinct Hues) */
+    --f-sandia: #ff4b5c;          /* Coral Red */
+    --f-frutos-rojos: #e91e63;    /* Deep Fuchsia */
+    --f-pina: #ffe066;            /* Pastel Yellow */
+    --f-manzana-verde: #a9e34b;   /* Acid Green */
+    --f-mora-azul: #4dabf7;       /* Soft Blue */
+    --f-tamarindo: #c68642;       /* Tamarind Brown */
+    --f-pepino-limon: #20c997;    /* Mint Green */
+    --f-mango: #ff922b;           /* Bright Orange */
+    --f-fresa: #ff6b6b;           /* Strawberry Red */
+    --f-kiwi: #51cf66;            /* Kiwi Green */
+    --f-maracuya: #ffd43b;        /* Passion Golden */
+    --f-mineral: #adb5bd;         /* Silver Gray */
+    --f-coca-cola: #ff3b30;       /* Coke Red */
+    --f-m-clasica: #f8f9fa;       /* Off-White */
+    --f-m-cubana: #a1887f;        /* Clay Brown */
+    --f-m-clamato: #e57373;       /* Light Tomato Red */
+    --f-m-michelocooler: #4fc3f7; /* Electric Cyan */
 }
 
 /* ==========================================================================
@@ -51,7 +70,7 @@ body {
 }
 
 /* ==========================================================================
-   Dynamic Background & Particles
+   Dynamic Background
    ========================================================================== */
 .mesh-bg {
     position: fixed;
@@ -60,48 +79,15 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -2;
-    background: radial-gradient(circle at 10% 20%, rgba(var(--brand-pink-rgb), 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(var(--brand-orange-rgb), 0.15) 0%, transparent 50%),
+    background: radial-gradient(circle at 10% 20%, rgba(var(--brand-pink-rgb), 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(var(--brand-orange-rgb), 0.12) 0%, transparent 50%),
                 radial-gradient(circle at 50% 50%, #0c0714 0%, var(--bg-dark) 100%);
     animation: meshShift 12s infinite alternate ease-in-out;
 }
 
 @keyframes meshShift {
     0% { transform: scale(1); }
-    100% { transform: scale(1.1) rotate(2deg); }
-}
-
-.particles-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.particle {
-    position: absolute;
-    bottom: -50px;
-    fill: var(--brand-pink);
-    opacity: 0;
-    pointer-events: none;
-    animation: floatUp 8s infinite linear;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0deg) scale(0.6);
-        opacity: 0;
-    }
-    10% { opacity: 0.1; }
-    90% { opacity: 0.1; }
-    100% {
-        transform: translateY(-110vh) rotate(360deg) scale(1.2);
-        opacity: 0;
-    }
+    100% { transform: scale(1.08) rotate(1deg); }
 }
 
 /* ==========================================================================
@@ -155,7 +141,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Clip Path from bottom (y=100%) to top (y=0%) for liquid filling */
     clip-path: inset(100% 0 0 0);
     animation: fillLiquid 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -196,10 +181,10 @@ body {
    ========================================================================== */
 .app-wrap {
     width: 100%;
-    max-width: 500px;
+    max-width: 480px;
     margin: 0 auto;
-    padding: 16px 16px 80px 16px; /* Space for footer/zig-zag */
-    display: none; /* JS will display after loader finishes */
+    padding: 16px 16px 40px 16px;
+    display: none;
     animation: fadeApp 0.8s ease forwards;
 }
 
@@ -211,7 +196,7 @@ body {
 .menu-header {
     text-align: center;
     position: relative;
-    padding: 24px 0 32px 0;
+    padding: 24px 0 24px 0;
 }
 
 .logo-wrapper {
@@ -250,19 +235,19 @@ body {
 /* Butterflies Flutter Animation */
 .butterfly {
     position: absolute;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     top: 15px;
-    filter: drop-shadow(0 0 5px var(--brand-yellow));
+    filter: drop-shadow(0 0 4px var(--brand-yellow));
 }
 
 .butterfly-left {
-    left: 20px;
+    left: 24px;
     animation: butterflyLeftAnim 4s infinite ease-in-out;
 }
 
 .butterfly-right {
-    right: 20px;
+    right: 24px;
     animation: butterflyRightAnim 4.5s infinite ease-in-out;
 }
 
@@ -280,12 +265,12 @@ body {
 
 @keyframes butterflyLeftAnim {
     0%, 100% { transform: translateY(0) rotate(-15deg); }
-    50% { transform: translateY(-10px) rotate(10deg); }
+    50% { transform: translateY(-8px) rotate(10deg); }
 }
 
 @keyframes butterflyRightAnim {
     0%, 100% { transform: translateY(0) rotate(15deg); }
-    50% { transform: translateY(-12px) rotate(-10deg); }
+    50% { transform: translateY(-10px) rotate(-10deg); }
 }
 
 .header-decor {
@@ -296,55 +281,77 @@ body {
 }
 
 .decor-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--brand-pink) 0%, var(--brand-orange) 100%);
 }
 
 /* ==========================================================================
-   Menu Sections & Semantic Cards
+   Menu Sections & Minimalist Cards
    ========================================================================== */
 .menu-section {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 .section-title {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 900;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     color: var(--text-primary);
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
-    text-shadow: 0 0 10px rgba(var(--brand-pink-rgb), 0.4);
+    text-shadow: 0 0 8px rgba(var(--brand-pink-rgb), 0.4);
 }
 
 .title-icon {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--brand-orange);
     animation: floatIcon 2.5s infinite ease-in-out alternate;
 }
 
 @keyframes floatIcon {
-    from { transform: translateY(-3px); }
-    to { transform: translateY(3px); }
+    from { transform: translateY(-2px); }
+    to { transform: translateY(2px); }
 }
 
 .menu-items-grid {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
+}
+
+/* Subcategory divider (e.g. RON) */
+.subcategory-divider-wrap {
+    display: flex;
+    align-items: center;
+    margin: 16px 0 6px 0;
+    gap: 14px;
+}
+
+.subcategory-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--brand-pink);
+    letter-spacing: 3px;
+    text-shadow: 0 0 6px rgba(var(--brand-pink-rgb), 0.4);
+}
+
+.subcategory-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(var(--brand-pink-rgb), 0.6), transparent);
 }
 
 /* Staggered Scroll Animation */
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal.active {
@@ -352,72 +359,61 @@ body {
     transform: translateY(0);
 }
 
-/* Interactive Menu Item Card */
+/* Minimalist Card */
 .menu-item-card {
     background-color: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--border-radius-md);
-    padding: 18px;
-    backdrop-filter: blur(15px);
+    padding: 14px 16px;
+    backdrop-filter: blur(10px);
     transition: var(--transition-smooth);
     position: relative;
-    overflow: hidden;
-}
-
-.menu-item-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-    transition: 0.5s;
-}
-
-.menu-item-card:hover::before {
-    left: 100%;
 }
 
 .menu-item-card:hover {
-    transform: scale(1.03);
-    background-color: rgba(255, 255, 255, 0.06);
+    transform: scale(1.02);
+    background-color: rgba(255, 255, 255, 0.04);
     border-color: var(--glass-border-focus);
-    box-shadow: 0 8px 24px rgba(var(--brand-pink-rgb), 0.15);
+    box-shadow: 0 6px 20px rgba(var(--brand-pink-rgb), 0.1);
 }
 
 .item-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 6px;
+    align-items: center;
+    width: 100%;
 }
 
 .item-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: 0.5px;
 }
 
 .item-price {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 900;
     color: var(--brand-orange);
     text-shadow: 0 0 8px rgba(var(--brand-orange-rgb), 0.3);
 }
 
+.item-price-empty {
+    width: 0;
+    height: 0;
+}
+
 /* Dotted Line Divider SVG */
 .dotted-divider-svg {
     width: 100%;
-    height: 12px;
-    margin: 4px 0 8px 0;
+    height: 10px;
+    margin: 2px 0 2px 0;
     display: block;
 }
 
 .dotted-line {
-    stroke: rgba(255, 255, 255, 0.15);
-    stroke-width: 2.5;
+    stroke: rgba(255, 255, 255, 0.12);
+    stroke-width: 2.2;
     stroke-dasharray: 4 6;
     stroke-dashoffset: 100;
     stroke-linecap: round;
@@ -429,26 +425,80 @@ body {
     stroke: var(--brand-pink);
 }
 
-.item-desc {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.5;
+/* ==========================================================================
+   Flavor Pill Badges & Color Tones
+   ========================================================================== */
+.flavors-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
 }
 
-.flavors-list {
-    display: block;
-    margin-top: 6px;
-    font-style: italic;
-    color: var(--brand-yellow);
-    font-size: 0.8rem;
+.flavor-pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.01);
+    transition: var(--transition-smooth);
+    cursor: default;
 }
+
+.flavor-pill:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
+}
+
+/* Colored tags with soft neon glow on hover */
+.f-sandia { color: var(--f-sandia); border-color: rgba(255, 75, 92, 0.2); }
+.f-sandia:hover { box-shadow: 0 0 8px var(--f-sandia); background-color: rgba(255, 75, 92, 0.08); }
+
+.f-frutos-rojos { color: var(--f-frutos-rojos); border-color: rgba(233, 30, 99, 0.2); }
+.f-frutos-rojos:hover { box-shadow: 0 0 8px var(--f-frutos-rojos); background-color: rgba(233, 30, 99, 0.08); }
+
+.f-pina { color: var(--f-pina); border-color: rgba(255, 224, 102, 0.2); }
+.f-pina:hover { box-shadow: 0 0 8px var(--f-pina); background-color: rgba(255, 224, 102, 0.08); }
+
+.f-manzana-verde { color: var(--f-manzana-verde); border-color: rgba(169, 227, 75, 0.2); }
+.f-manzana-verde:hover { box-shadow: 0 0 8px var(--f-manzana-verde); background-color: rgba(169, 227, 75, 0.08); }
+
+.f-mora-azul { color: var(--f-mora-azul); border-color: rgba(77, 171, 247, 0.2); }
+.f-mora-azul:hover { box-shadow: 0 0 8px var(--f-mora-azul); background-color: rgba(77, 171, 247, 0.08); }
+
+.f-tamarindo { color: var(--f-tamarindo); border-color: rgba(198, 134, 66, 0.2); }
+.f-tamarindo:hover { box-shadow: 0 0 8px var(--f-tamarindo); background-color: rgba(198, 134, 66, 0.08); }
+
+.f-pepino-limon { color: var(--f-pepino-limon); border-color: rgba(32, 201, 151, 0.2); }
+.f-pepino-limon:hover { box-shadow: 0 0 8px var(--f-pepino-limon); background-color: rgba(32, 201, 151, 0.08); }
+
+.f-mango { color: var(--f-mango); border-color: rgba(255, 146, 43, 0.2); }
+.f-mango:hover { box-shadow: 0 0 8px var(--f-mango); background-color: rgba(255, 146, 43, 0.08); }
+
+.f-fresa { color: var(--f-fresa); border-color: rgba(255, 107, 107, 0.2); }
+.f-fresa:hover { box-shadow: 0 0 8px var(--f-fresa); background-color: rgba(255, 107, 107, 0.08); }
+
+.f-kiwi { color: var(--f-kiwi); border-color: rgba(81, 207, 102, 0.2); }
+.f-kiwi:hover { box-shadow: 0 0 8px var(--f-kiwi); background-color: rgba(81, 207, 102, 0.08); }
+
+.f-maracuya { color: var(--f-maracuya); border-color: rgba(255, 212, 59, 0.2); }
+.f-maracuya:hover { box-shadow: 0 0 8px var(--f-maracuya); background-color: rgba(255, 212, 59, 0.08); }
+
+.f-mineral { color: var(--f-mineral); border-color: rgba(173, 181, 189, 0.2); }
+.f-coca-cola { color: var(--f-coca-cola); border-color: rgba(255, 59, 48, 0.2); }
+
+.f-m-clasica { color: var(--f-m-clasica); border-color: rgba(248, 249, 250, 0.2); }
+.f-m-cubana { color: var(--f-m-cubana); border-color: rgba(161, 136, 127, 0.2); }
+.f-m-clamato { color: var(--f-m-clamato); border-color: rgba(229, 115, 115, 0.2); }
+.f-m-michelocooler { color: var(--f-m-michelocooler); border-color: rgba(79, 195, 247, 0.2); }
 
 /* Shimmer Line Divider */
 .shimmer-divider {
     height: 1px;
     width: 100%;
-    margin: 10px 0 35px 0;
-    background: linear-gradient(90deg, transparent 0%, rgba(var(--brand-pink-rgb), 0.6) 50%, transparent 100%);
+    margin: 10px 0 30px 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--brand-pink-rgb), 0.4) 50%, transparent 100%);
     background-size: 200% 100%;
     animation: shimmerLineMove 4s infinite linear;
 }
@@ -462,23 +512,23 @@ body {
    Banner Section & Cup Animations
    ========================================================================== */
 .banner-section {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 .banner-glass {
-    background: linear-gradient(135deg, rgba(var(--brand-pink-rgb), 0.08) 0%, rgba(var(--brand-orange-rgb), 0.08) 100%);
+    background: linear-gradient(135deg, rgba(var(--brand-pink-rgb), 0.06) 0%, rgba(var(--brand-orange-rgb), 0.06) 100%);
     border: 1px solid var(--glass-border);
     border-radius: var(--border-radius-lg);
-    padding: 24px;
+    padding: 20px;
     text-align: center;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 
 .banner-animation {
     width: 120px;
     height: 70px;
-    margin: 0 auto 12px auto;
+    margin: 0 auto 10px auto;
 }
 
 .cups-svg {
@@ -527,18 +577,12 @@ body {
 }
 
 .banner-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 900;
     letter-spacing: 1px;
     background: linear-gradient(135deg, var(--brand-pink) 0%, var(--brand-orange) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
-}
-
-.banner-desc {
-    font-size: 0.8rem;
-    color: var(--text-muted);
 }
 
 /* ==========================================================================
@@ -546,7 +590,7 @@ body {
    ========================================================================== */
 .menu-footer {
     position: relative;
-    padding-top: 30px;
+    padding-top: 24px;
     margin-top: auto;
 }
 
@@ -560,7 +604,7 @@ body {
 }
 
 .zigzag-svg {
-    width: 200%; /* Wider than container to allow sliding */
+    width: 200%;
     height: 100%;
     animation: slideZigzag 6s infinite linear;
 }
@@ -573,7 +617,7 @@ body {
 .footer-content {
     background-color: var(--bg-darker);
     border-top: 1px solid var(--glass-border);
-    padding: 32px 16px 24px 16px;
+    padding: 24px 16px 20px 16px;
     text-align: center;
     border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
 }
@@ -582,89 +626,45 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(228, 0, 124, 0.15);
-    border: 1px solid rgba(228, 0, 124, 0.4);
-    padding: 8px 16px;
+    background: rgba(228, 0, 124, 0.12);
+    border: 1px solid rgba(228, 0, 124, 0.3);
+    padding: 6px 14px;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--brand-pink);
     letter-spacing: 2px;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     animation: pulseBadge 2s infinite ease-in-out;
 }
 
 @keyframes pulseBadge {
-    0%, 100% { box-shadow: 0 0 5px rgba(228, 0, 124, 0.2); }
-    50% { box-shadow: 0 0 15px rgba(228, 0, 124, 0.5); }
+    0%, 100% { box-shadow: 0 0 5px rgba(228, 0, 124, 0.1); }
+    50% { box-shadow: 0 0 10px rgba(228, 0, 124, 0.3); }
 }
 
 .footer-phone {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 900;
     color: var(--text-primary);
     text-decoration: none;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     transition: var(--transition-smooth);
 }
 
 .footer-phone:hover {
     color: var(--brand-orange);
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .footer-copy {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
 }
 
 /* ==========================================================================
-   Sticky Call & WhatsApp Ripple Button
-   ========================================================================== */
-.whatsapp-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #25d366;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    z-index: 100;
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-    transition: var(--transition-smooth);
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
-}
-
-.float-ripple {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 2px solid #25d366;
-    animation: ripple 2s infinite ease-out;
-    pointer-events: none;
-    z-index: -1;
-}
-
-@keyframes ripple {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(1.6); opacity: 0; }
-}
-
-/* ==========================================================================
-   Utility Classes & Transitions
+   Utility Ripple Transitions
    ========================================================================== */
 .ripple-active {
     position: relative;
@@ -672,10 +672,10 @@ body {
 }
 .ripple {
     position: absolute;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     transform: scale(0);
-    animation: rippleEffect 0.6s linear;
+    animation: rippleEffect 0.5s linear;
     pointer-events: none;
 }
 @keyframes rippleEffect {
